@@ -1,0 +1,253 @@
+=================Navigation=========
+
+
+1)	you can provide navigation forward and backward between an application. 
+		We will first look at how to provide up navigation in an application.
+
+
+2)		Providing Up Navigation
+			The up navigation will allow our application to
+ 				move to previous activity from the next activity. It can be done like this.
+
+
+android:parentActivityName = "com.example.test.MainActivity" 
+
+After that you need to call setDisplayHomeAsUpEnabled method of
+ 
+getActionBar() in the onCreate method of the activity. This will enable the back button in the top action bar.
+
+getActionBar().setDisplayHomeAsUpEnabled(true);
+
+
+
+===========================
+public boolean onOptionsItemSelected(MenuItem item) {
+   
+   switch (item.getItemId()) {
+      case android.R.id.home:
+      NavUtils.navigateUpFromSameTask(this);
+      return true;
+   }	
+}
+
+
+====================Handling device back button=========================
+
+
+@Override
+public void onBackPressed() {
+   moveTaskToBack(true); 
+   MainActivity2.this.finish();
+}
+
+
+1	addTab(ActionBar.Tab tab, boolean setSelected)
+
+			This method adds a tab for use in tabbed navigation mode
+
+2	getSelectedTab()
+
+			This method returns the currently selected tab if in tabbed navigation mode and there is at least one tab present
+
+3	hide()
+
+			This method hide the ActionBar if it is currently showing
+
+4	removeAllTabs()
+
+			This method remove all tabs from the action bar and deselect the current tab
+
+5	selectTab(ActionBar.Tab tab)
+
+			This method select the specified tab
+
+
+====================================
+
+1	canGoBack()
+
+This method specifies the WebView has a back history item.
+
+2	canGoForward()
+
+This method specifies the WebView has a forward history item.
+
+3	clearHistory()
+
+This method will clear the WebView forward and backward history.
+
+4	destroy()
+
+This method destroy the internal state of WebView.
+
+
+
+
+
+
+5	findAllAsync(String find)
+
+This method find all instances of string and highlight them.
+
+6	getProgress()
+
+This method gets the progress of the current page.
+
+7	getTitle()
+
+This method return the title of the current page.
+
+8	getUrl()
+
+This method return the url of the current page.
+
+
+
+
+
+=====================
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.zaaviyah_navigations.Main2Activity">
+
+    <WebView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/webView"
+        android:layout_gravity="center_horizontal"
+        android:layout_weight="1.03" />
+
+
+</RelativeLayout>
+============
+
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.zaaviyah_navigations.MainActivity">
+
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="73dp"
+        android:textSize="33dp"
+        android:text="Navigations" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="200dp"
+        android:layout_height="150dp"
+        android:layout_marginTop="16dp"
+        app:srcCompat="@drawable/shahlogo"
+        android:layout_below="@+id/textView"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="81dp"
+        android:layout_marginStart="81dp" />
+
+    <Button
+        android:id="@+id/btn1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="next page"
+        android:layout_below="@+id/imageView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="93dp" />
+
+
+</RelativeLayout>
+====================
+
+package com.zaaviyah.zaaviyah_navigations;
+
+import android.content.Intent;
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+import android.widget.Button;
+
+public class MainActivity extends AppCompatActivity {
+    Button b1;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        b1 = (Button) findViewById(R.id.btn1);
+
+        b1.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent in=new Intent(MainActivity.this,Main2Activity.class);
+                startActivity(in);
+            }
+        });
+    }
+
+
+
+
+
+}
+===============
+package com.zaaviyah.zaaviyah_navigations;
+
+import android.support.v7.app.AppCompatActivity;
+import android.os.Bundle;
+import android.webkit.WebView;
+import android.webkit.WebViewClient;
+
+public class Main2Activity extends AppCompatActivity {
+
+
+    WebView wv;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main2);
+
+        wv = (WebView) findViewById(R.id.webView);
+
+        wv.setWebViewClient(new MyBrowser());
+
+        wv.getSettings().setLoadsImagesAutomatically(true);
+        wv.getSettings().setJavaScriptEnabled(true);
+        wv.loadUrl("http://www.leatherjacket4.com/");
+
+    }
+
+
+    private class MyBrowser extends WebViewClient {
+        @Override
+
+        public boolean shouldOverrideUrlLoading(WebView view, String url) {
+            view.loadUrl(url);
+            return true;
+        }
+    }
+
+
+}
+
+
+
+=================end=================
+
+

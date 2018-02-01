@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.zaaviyah.alpha_ui_ndroid_20_1_18.MainActivity">
+
+
+    <ToggleButton
+        android:id="@+id/tg1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="67dp"
+        android:layout_marginStart="67dp"
+        android:layout_marginTop="18dp"
+        android:text="ToggleButton"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ToggleButton
+        android:id="@+id/tg2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="59dp"
+        android:layout_marginStart="59dp"
+        android:text="ToggleButton"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_alignBaseline="@+id/tg1"
+        android:layout_alignBottom="@+id/tg1"
+        android:layout_toRightOf="@+id/tg1"
+        android:layout_toEndOf="@+id/tg1" />
+
+    <Button
+        android:id="@+id/btshToggle"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="show"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        android:textStyle="bold"
+        android:layout_below="@+id/tg1"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="16dp" />
+
+    <CheckBox
+        android:id="@+id/ckPIzza"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/btshToggle"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="84dp"
+        android:text="pizza"
+        android:textAllCaps="true"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/ckBurger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ckPIzza"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="burger"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <CheckBox
+        android:id="@+id/ckIce_Cream"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ckBurger"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="22dp"
+        android:text="ice cream"
+        android:textAlignment="center"
+        android:textAllCaps="true"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/btChck"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/ckIce_Cream"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="68dp"
+        android:text="Show"
+        android:textAlignment="center"
+        android:textSize="22dp"
+        android:textStyle="bold" />
+</RelativeLayout>
